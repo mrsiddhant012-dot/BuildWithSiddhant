@@ -1,36 +1,88 @@
-const projects = [
-    {
-        name: "Nova",
-        type: "Android • Voice AI",
-        description: "A voice-based AI assistant for Android.",
-        apk: "projects/nova/Nova.apk",
-        github: "#"
-    },
+document.addEventListener("DOMContentLoaded", () => {
 
-    {
-        name: "Siddhant AI",
-        type: "Android • AI Assistant",
-        description: "An Android AI assistant with voice interaction and device controls.",
-        apk: "projects/siddhant-ai/Siddhant-AI.apk",
-        github: "#"
-    },
+    /* Scroll reveal */
+    const revealElements = document.querySelectorAll(
+        ".section, .card, .about, .contact"
+    );
 
-    {
-        name: "Music By Siddhant",
-        type: "Web • Music",
-        description: "A music-focused web project created by Siddhant Kumar.",
-        app: "#",
-        github: "#"
-    },
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("reveal-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12
+        }
+    );
 
-    {
-        name: "SonicFlow",
-        type: "Android • Music",
-        description: "A music streaming application project.",
-        apk: "projects/sonicflow/SonicFlow.apk",
-        github: "#"
+    revealElements.forEach((element) => {
+        element.classList.add("reveal");
+        revealObserver.observe(element);
+    });
+
+
+    /* Active navigation link */
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    const navObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                    });
+
+                    const activeLink = document.querySelector(
+                        `.nav-links a[href="#${entry.target.id}"]`
+                    );
+
+                    if (activeLink) {
+                        activeLink.classList.add("active");
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.45
+        }
+    );
+
+    sections.forEach((section) => {
+        navObserver.observe(section);
+    });
+
+
+    /* Card tilt effect — desktop only */
+    if (window.matchMedia("(min-width: 851px)").matches) {
+
+        document.querySelectorAll(".card").forEach((card) => {
+
+            card.addEventListener("mousemove", (event) => {
+
+                const rect = card.getBoundingClientRect();
+
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - 0.5) * -5;
+
+                const rotateY =
+                    ((x / rect.width) - 0.5) * 5;
+
+                card.style.transform =
+                    `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "";
+            });
+        });
     }
-];
 
-console.log("BuildWithSiddhant.dev loaded");
-console.log("Projects:", projects);
+});

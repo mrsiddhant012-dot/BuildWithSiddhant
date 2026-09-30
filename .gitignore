@@ -1,0 +1,11 @@
+# Large APKs - host separately
+assets/apk/Nova.apk
+
+# Local backup files
+*.backup
+*.before-*
+
+# APK files - host separately
+assets/apk/Siddhant-AI.apk
+assets/apk/MusicBySiddhant.apk
+assets/apk/SonicFlow.apk

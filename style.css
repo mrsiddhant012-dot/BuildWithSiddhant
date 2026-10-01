@@ -905,3 +905,16 @@ section {
     box-shadow: 0 0 18px rgba(139, 92, 246, 0.45);
     flex-shrink: 0;
 }
+
+/* FORCE PROFILE PHOTO SIZE */
+nav img.profile-photo {
+    width: 52px !important;
+    height: 52px !important;
+    max-width: 52px !important;
+    max-height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    display: block !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}

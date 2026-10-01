@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mrsiddhant012-dot.github.io/BuildWithSiddhant/sitemap.xml

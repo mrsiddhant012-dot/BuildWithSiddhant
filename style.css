@@ -167,6 +167,12 @@ nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+    align-items: stretch;
+}
+
+.projects .card {
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .card {

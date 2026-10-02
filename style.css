@@ -175,9 +175,11 @@ nav {
     border-radius: 18px;
     background: linear-gradient(
         145deg,
-        #101019,
-        #0b0b12
+        rgba(16,16,25,0.96),
+        rgba(11,11,18,0.96)
     );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: 0.3s;
 }
 
